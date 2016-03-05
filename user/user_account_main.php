@@ -50,6 +50,13 @@ $fetched_row=mysql_fetch_array($result_set);
 	<h4 class="alert_error">There are <?php echo $countdowndate; ?> days before your Due Date!</h4>
 	<?php
 	}
+	if ($countdowndate == 0 && $countdowndate >= 0){
+	?>
+	<h4 class="alert_error">Reminder, today is your Due Date!</h4>
+	<?php
+	}
+
+
 ?>
   <article class="module width_full_real">
   <header><h3 class="tabs_involved">User Account</h3>
