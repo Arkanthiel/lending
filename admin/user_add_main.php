@@ -1,8 +1,11 @@
 <?php
 include_once 'admincheck.php';
 include_once '../include/dbconfig.php';
+
 if(isset($_POST['btn-save']))
 { // variables for input data
+ $username =  $_POST['username'];
+ $password =  $_POST['password'];
  $first_name = $_POST['first_name'];
  $middle_name = $_POST['middle_name'];
  $last_name = $_POST['last_name'];
@@ -65,6 +68,8 @@ if(isset($_POST['btn-save']))
  // variables for input data
 
  //escape stuff because Robert Drop Tables
+ $username =  stripslashes($username);
+ $password =  stripslashes($password);
  $first_name = stripslashes($first_name);
  $middle_name = stripslashes($middle_name);
  $last_name = stripslashes($last_name);
@@ -119,6 +124,8 @@ if(isset($_POST['btn-save']))
  $ctincome = stripslashes($ctincome);
  $ctexpenses = stripslashes($ctexpenses);
  // curse you bobby droptables();
+ $username =  mysql_real_escape_string($username);
+ $password =  mysql_real_escape_string($password);
  $first_name = mysql_real_escape_string($first_name);
  $middle_name = mysql_real_escape_string($middle_name);
  $last_name = mysql_real_escape_string($last_name);
@@ -175,72 +182,141 @@ if(isset($_POST['btn-save']))
 
 // sql query for inserting data into database
 
-        $sql_query = "INSERT INTO users
-        first_name = '$first_name',
-        middle_name = '$middle_name',
-        last_name = '$last_name',
-        nick_name = '$nick_name',
-        gender = '$gender',
-        email = '$email',
-        phonenum = '$phonenum',
-        cellphone = '$cellphone',
-        birthdate = '$birthdate',
-        religion = '$religion',
-        civilstatus = '$civilstatus',
-        education = '$education',
-        homeadd = '$homeadd',
-        provadd = '$provadd',
-        loancycle = '$loancycle',
-        dailyamt = '$dailyamt',
-        dailysave = '$dailysave',
-        datedue = '$datedue',
-        loantype = '$loantype',
-        locurrentamt = '$locurrentamt',
-        lolastpaidamt = '$lolastpaidamt',
-        lolastpaiddate = '$lolastpaiddate',
-        sfirst_name = '$sfirst_name',
-        smiddle_name = '$smiddle_name',
-        slast_name = '$slast_name',
-        snick_name = '$snick_name',
-        sbirthdate = '$sbirthdate',
-        semployer = '$semployer',
-        sposition = '$sposition',
-        cofirst_name = '$cofirst_name',
-        comiddle_name = '$comiddle_name',
-        colast_name = '$colast_name',
-        conick_name = '$conick_name',
-        cocell = '$cocell',
-        cobirthdate = '$cobirthdate',
-        coage = '$coage',
-        coreligion = '$coreligion',
-        coeduc = '$coeduc',
-        cobusiness = '$cobusiness',
-        cobusinessadd = '$cobusinessadd',
-        coincome = '$coincome',
-        coexpenses = '$coexpenses',
-        ctfirst_name = '$ctfirst_name',
-        ctmiddle_name = '$ctmiddle_name',
-        ctlast_name = '$ctlast_name',
-        ctnick_name = '$ctnick_name',
-        ctgender = '$ctgender',
-        ctcell = '$ctcell',
-        ctbirthdate = '$ctbirthdate',
-        ctage = '$ctage',
-        ctreligion = '$ctreligion',
-        ctcivlstatus = '$ctcivlstatus',
-        cteduc = '$cteduc',
-        cthomeadd = '$cthomeadd',
-        ctprovadd = '$ctprovadd',
-        ctbusiness = '$ctbusinessadd',
-        ctbusinessadd = '$ctbusiness',
-        ctincome = '$ctincome',
-        ctexpenses = '$ctexpenses'
-";
+        $sql_query = "INSERT INTO
+        users(
+        username,
+        password,
+        first_name,
+        middle_name,
+        last_name,
+        nick_name,
+        gender,
+        email,
+        phonenum,
+        cellphone,
+        birthdate,
+        religion,
+        civilstatus,
+        education,
+        homeadd,
+        provadd,
+        loancycle,
+        dailyamt,
+        dailysave,
+        datedue,
+        loantype,
+        locurrentamt,
+        lolastpaidamt,
+        lolastpaiddate,
+        sfirst_name,
+        smiddle_name,
+        slast_name,
+        snick_name,
+        sbirthdate,
+        semployer,
+        sposition,
+        cofirst_name,
+        comiddle_name,
+        colast_name,
+        conick_name,
+        cocell,
+        cobirthdate,
+        coage,
+        coreligion,
+        coeduc,
+        cobusiness,
+        cobusinessadd,
+        coincome,
+        coexpenses,
+        ctfirst_name,
+        ctmiddle_name,
+        ctlast_name,
+        ctnick_name,
+        ctgender,
+        ctcell,
+        ctbirthdate,
+        ctage,
+        ctreligion,
+        ctcivlstatus,
+        cteduc,
+        cthomeadd,
+        ctprovadd,
+        ctbusiness,
+        ctbusinessadd,
+        ctincome,
+        ctexpenses
+        )
+        VALUES(
+
+        '$username',
+        '$password',
+        '$first_name',
+        '$middle_name',
+        '$last_name',
+        '$nick_name',
+        '$gender',
+        '$email',
+        '$phonenum',
+        '$cellphone',
+        '$birthdate',
+        '$religion',
+        '$civilstatus',
+        '$education',
+        '$homeadd',
+        '$provadd',
+        '$loancycle',
+        '$dailyamt',
+        '$dailysave',
+        '$datedue',
+        '$loantype',
+        '$locurrentamt',
+        '$lolastpaidamt',
+        '$lolastpaiddate',
+        '$sfirst_name',
+        '$smiddle_name',
+        '$slast_name',
+        '$snick_name',
+        '$sbirthdate',
+        '$semployer',
+        '$sposition',
+        '$cofirst_name',
+        '$comiddle_name',
+        '$colast_name',
+        '$conick_name',
+        '$cocell',
+        '$cobirthdate',
+        '$coage',
+        '$coreligion',
+        '$coeduc',
+        '$cobusiness',
+        '$cobusinessadd',
+        '$coincome',
+        '$coexpenses',
+        '$ctfirst_name',
+        '$ctmiddle_name',
+        '$ctlast_name',
+        '$ctnick_name',
+        '$ctgender',
+        '$ctcell',
+        '$ctbirthdate',
+        '$ctage',
+        '$ctreligion',
+        '$ctcivlstatus',
+        '$cteduc',
+        '$cthomeadd',
+        '$ctprovadd',
+        '$ctbusiness',
+        '$ctbusinessadd',
+        '$ctincome',
+        '$ctexpenses'
+        )";
         mysql_query($sql_query);
 
 // sql query for inserting data into database
  }
 ?>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -254,16 +330,68 @@ if(isset($_POST['btn-save']))
   <script src="include/dashstyle/js/jquery.tablesorter.min.js" type="text/javascript"></script>
   <script type="text/javascript" src="/include/dashstyle/js/jquery.equalHeight.js"></script>
   <script type="text/javascript">
+  function checkPass()
+{
+    //Store the password field objects into variables ...
+    var pass1 = document.getElementById('pass1');
+    var pass2 = document.getElementById('pass2');
+    //Store the Confimation Message Object ...
+    var message = document.getElementById('confirmMessage');
+    //Set the colors we will be using ...
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+    //Compare the values in the password field
+    //and the confirmation field
+    if(pass1.value == pass2.value){
+        //The passwords match.
+        //Set the color to the good color and inform
+        //the user that they have entered the correct password
+        pass2.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "Passwords Match!"
+    }else{
+        //The passwords do not match.
+        //Set the color to the bad color and
+        //notify the user.
+        pass2.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = "Passwords Do Not Match!"
+    }
+}
   </script>
 </head>
 <body>
   <form method="post">
+
+    <article class="module width_full_real">
+    <header><h3 class="tabs_involved">Account Details</h3>
+    </header>
+        <div class="module_content">
+          <div id="tab1">
+            <table class="tablesorter" cellpadding="4" >
+              <tr>
+                <th><p>Username:</p></th>
+                <th><p>Password:</p></th>
+                <th><p>Confirm Password:</p></th>
+                <th><p>Email:</p></th>
+                </tr>
+              <tr>
+                <th><input type="text" name="username" required=""/></th>
+                <th><input type="password" name="password" id="pass1" required=""/></th>
+                <th><input type="password" id="pass2" onkeyup="checkPass(); return false;" required=""/> <br/>  <sub><span id="confirmMessage" class="confirmMessage"></span></sub></th>
+                <th><input type="email" name="email" placeholder="Email" required="" /></th>
+                <th></th>
+            </table>
+      </div>
+    </div>
+    </article>
+
   <article class="module width_full_real">
   <header><h3 class="tabs_involved">Principal Borrower Information</h3>
   </header>
   		<div class="module_content">
-  			<div id="tab1" class="tab_content">
-          <table class="tablesorter" cellpadding="4" >
+  			<div id="tab2">
+          <table class="tablesorter" cellpadding="4">
             <tr>
               <th><p>First Name:</p></th>
               <th><p>Middle Name:</p></th>
@@ -285,17 +413,17 @@ if(isset($_POST['btn-save']))
 
             </tr>
             <tr>
-              <th><p>Email:</p></th>
               <th><p>Phone Number:</p></th>
               <th><p>Cellphone Number:</p></th>
               <th><p>Birthdate:</p></th>
               <th></th>
+              <th></th>
             </tr>
             <tr>
-              <th><input type="email" name="email" placeholder="Email"  /></th>
               <th><input type="text" name="phonenum" placeholder="Phone Number"/></th>
               <th><input type="text" name="cellphone" placeholder="Cellphone Number"/></th>
               <th><input type="date" name="birthdate" placeholder="Birthdate"/></th>
+              <th></th>
               <th></th>
               <th></th>
             </tr>
@@ -323,7 +451,7 @@ if(isset($_POST['btn-save']))
                   <option value="CollegeUndergrad">Some College</option>
                   <option value="Bachelor">Bachelor's degree</option>
                   <option value="Masters">Master's Degree</option>
-                  <option value="Doctorate>Doctorate Degree"</option>
+                  <option value="Doctorate">Doctorate Degree</option>
                 </select>
               </th>
               <th><input type="text" name="homeadd" placeholder="Cellphone Number"/></th>
@@ -370,7 +498,7 @@ if(isset($_POST['btn-save']))
             </tr>
             <tr>
               <th><input type="text" name="locurrentamt" placeholder="Date Due"/></th>
-              <th><input type="date" name="lolastpaidamt" placeholder="Last Paid Amount"/></th>
+              <th><input type="text" name="lolastpaidamt" placeholder="Last Paid Amount"/></th>
               <th><input type="date" name="lolastpaiddate" placeholder="Date Due"/></th>
               <th></th>
               <th></th>
@@ -409,7 +537,7 @@ if(isset($_POST['btn-save']))
               <th></th>
             </tr>
             <tr>
-              <th><input type="date" name="sbirthdate" placeholder="Birthdate" /></th>
+              <th><input type="date" name="sbirthdate"/></th>
               <th><input type="text" name="semployer" placeholder="Spouse Emplyer" /></th>
               <th><input type="text" name="sposition" placeholder="Spouse Position"/></th>
               <th></th>
@@ -478,8 +606,8 @@ if(isset($_POST['btn-save']))
                   <option value="Doctorate">Doctorate Degree</option>
                 </select>
               </th>
-              <th><input type="text" name="cohomeadd" placeholder="Cellphone Number" /></th>
-              <th><input type="text" name="coprovadd" placeholder="Cellphone Number" /></th>
+              <th><input type="text" name="cohomeadd"/></th>
+              <th><input type="text" name="coprovadd"/></th>
             </tr>
             <tr>
               <th><p>Business Name:</p></th>
@@ -489,10 +617,10 @@ if(isset($_POST['btn-save']))
               <th></th>
             </tr>
             <tr>
-              <th><input type="text" name="cobusiness" placeholder="First Name" /></th>
-              <th><input type="text" name="cobusinessadd" placeholder="Middle Name"/></th>
-              <th><input type="text" name="coincome" placeholder="Last Name" /></th>
-              <th><input type="text" name="coexpenses" placeholder="Nick Name"/></th>
+              <th><input type="text" name="cobusiness" /></th>
+              <th><input type="text" name="cobusinessadd"/></th>
+              <th><input type="text" name="coincome"/></th>
+              <th><input type="text" name="coexpenses"/></th>
               <th></th>
           </table>
   </div>
@@ -574,17 +702,17 @@ if(isset($_POST['btn-save']))
             <th></th>
           </tr>
           <tr>
-            <th><input type="text" name="ctbusiness" placeholder="First Name"/></th>
-            <th><input type="text" name="ctbusinessadd" placeholder="Middle Name"/></th>
-            <th><input type="text" name="ctincome" placeholder="Last Name" /></th>
-            <th><input type="text" name="ctexpenses" placeholder="Nick Name" /></th>
+            <th><input type="text" name="ctbusiness"/></th>
+            <th><input type="text" name="ctbusinessadd"/></th>
+            <th><input type="text" name="ctincome"/></th>
+            <th><input type="text" name="ctexpenses"/></th>
             <th></th>
           </table>
 
   </div>
   <footer>
               <div class="submit_link">
-  <button type="submit" name="btn-update"><strong>Add User</strong></button> <button type="submit" name="btn-cancel"><strong>Cancel</strong></button>
+  <button type="submit" name="btn-save"><strong>Add User</strong></button> <button type="submit" name="btn-cancel"><strong>Cancel</strong></button>
 </div>
   </footer>
   </article>
