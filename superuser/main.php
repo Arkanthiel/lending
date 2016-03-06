@@ -48,30 +48,32 @@ function delete_id(id)
  <div id="content">
 <section id="main" class="column">
   <?php
-   $sql_query="SELECT * FROM blog_posts";
+   $sql_query="SELECT * FROM blog_posts ORDER BY postDate DESC";
    $result_set=mysql_query($sql_query);
    while($row=mysql_fetch_row($result_set))
         {
   ?>
-  <article class="module width_full">
+  <article class="module width_full_real">
 
     <div class="module_content">
       <fieldset>
       <header><h3>Entry Listing</h3></header>
-      <label>Post Title</label><input type="text" value="<?php echo $row[1]; ?>" disabled />
-      <label>Post Preview</label><input type="text" value="<?php echo $row[2]; ?>" disabled />
+      <label>Post Title</label><input type="text" value="<?php echo $row[2]; ?>" disabled />
+      <label>Post Preview</label><input type="text" value="<?php echo $row[3]; ?>" disabled />
       </fieldset>
     <fieldset>
       <label>Content</label>
-      <textarea type="text" rows="5" disabled /><?php echo $row[3]; ?></textarea>
+      <textarea type="text" rows="5" disabled /><?php echo $row[4]; ?></textarea>
     </fieldset>
       </header>
           </div>
 
         <footer>
           <div class="submit_link">
-            <label>Time</label>
-            <input type="text" value="<?php echo $row[4]; ?>" disabled />
+            <label>Author:</label>
+            <input type="text" value="<?php echo $row[1]; ?>" disabled />
+            <label>Posted on:</label>
+            <input type="text" value="<?php echo $row[5]; ?>" disabled />
             <a href="javascript:edit_id('<?php echo $row[0]; ?>')"><button type="submit"><strong>Edit</strong></button></a>
             <a href="javascript:delete_id('<?php echo $row[0]; ?>')"><button type="submit" name="btn-update"><strong>Delete</strong></button></a>
           </div>

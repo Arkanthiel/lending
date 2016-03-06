@@ -22,14 +22,15 @@
 <body>
 <aside id="sidebar" class="column">
 <h3>Blog Tasks</h3>
-<li class="icn_new_article"><a href="../admin/entry_add">New Entry</a></li>
-<li class="icn_edit_article"><a href="../admin/index">View Enties</a></li>
-<li class="icn_categories"><a href="#">Search Entry</a></li>
+<li class="icn_new_article"><a href="entry_add">New Entry</a></li>
+<li class="icn_edit_article"><a href="index">View Enties</a></li>
+<li class="icn_categories"><a href="entry_search">Search Entry</a></li>
 </ul>
 <h3>User Tasks</h3>
-<li class="icn_add_user"><a href="../admin/user_add">Add New User</a></li>
-<li class="icn_view_users"><a href="../admin/user_view">View Users</a></li>
-<li class="icn_profile"><a href="../admin/user_profile">Your Profile</a></li>
+<li class="icn_add_user"><a href="user_add">Add New User</a></li>
+<li class="icn_view_users"><a href="user_view">View Users</a></li>
+<li class="icn_profile"><a href="user_profile">Your Profile</a></li>
+<li class="icn_categories"><a href="user_search">Search for a User</a></li>
 </ul>
 <h3>Admin</h3>
 <li class="icn_jump_back"><a href="logout.php">Logout</a></li>

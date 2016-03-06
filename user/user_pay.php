@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
-<?php 
+<?php
 include_once 'admincheck.php';
 ?>
 <head>
 
 	<meta charset="utf-8"/>
-	<title>Edit Existing Entry | Admin Dashboard</title>
+	<title>Managing User Accounts | Admin Dashboard</title>
 
 	<link rel="stylesheet" href="../include/dashstyle/css/layout.css" type="text/css" media="screen" />
 	<!--[if lt IE 9]>
@@ -58,17 +58,17 @@ include_once 'admincheck.php';
 	<header id="header">
 		<hgroup>
 			<h1 class="site_title"><a href="index">Lending Sys</a></h1>
-			<h2 class="section_title">Dashboard</h2></div> <!--<div class="btn_view_site"><a href="http://www.medialoot.com">View Site</a>-->
+			<h2 class="section_title">Creative Credit &amp; Loans Assistance Services, Inc.</h2></div>
 		</hgroup>
 	</header> <!-- end of header bar -->
 
 	<section id="secondary_bar">
 		<div class="user">
-			<p><?php echo $_SESSION['firstname'];  echo $_SESSION['lastname'];?> </p>
+			<p><?php echo $_SESSION['firstname'];?> <?php echo $_SESSION['lastname'];?> </p>
 			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
 		</div>
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="index">Website Admin</a> <div class="breadcrumb_divider"></div> <a class="current">Edit Existing Article</a></article>
+			<article class="breadcrumbs"><a href="index">Website Backend</a> <div class="breadcrumb_divider"></div> <a class="current">Manage Payment</a></article>
 		</div>
 	</section><!-- end of secondary bar -->
 <!-- end of sidebar -->
@@ -77,7 +77,7 @@ include_once 'admincheck.php';
 
 	<section id="main" class="column">
 <!-- start of main section -->
-<?php include('entry_edit_main.php'); ?>
+<?php include('user_pay_main.php'); ?>
 	</section>
 
 

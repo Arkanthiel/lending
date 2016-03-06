@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<?php 
+<?php
 include_once 'admincheck.php';
 ?>
 <head>
@@ -58,13 +58,13 @@ include_once 'admincheck.php';
 	<header id="header">
 		<hgroup>
 			<h1 class="site_title"><a href="index">Lending Sys</a></h1>
-			<h2 class="section_title">Dashboard</h2></div> <!--<div class="btn_view_site"><a href="http://www.medialoot.com">View Site</a>-->
+			<h2 class="section_title">Creative Credit &amp; Loans Assistance Services, Inc.</h2></div> <!--<div class="btn_view_site"><a href="http://www.medialoot.com">View Site</a>-->
 		</hgroup>
 	</header> <!-- end of header bar -->
 
 	<section id="secondary_bar">
 		<div class="user">
-			<p><?php echo $_SESSION['firstname'];  echo $_SESSION['lastname'];?> </p>
+			<p><?php echo $_SESSION['firstname']; ?> <?php echo $_SESSION['lastname'];?> </p>
 			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
 		</div>
 		<div class="breadcrumbs_container">

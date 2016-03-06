@@ -22,12 +22,12 @@ require('/include/dbconfigblog.php');
 		<div id="header-wrapper">
 			<div id="header">
 				<div id="logo">
-					<h1><a href="#">Lending System</a></h1>
+					<h1><a href="index">Creative Credit</a></h1>
 				</div>
 				<div id="menu">
 					<ul>
-            <li><a href="#" accesskey="1" title="">Homepage</a></li>
-						<li><a href="services" accesskey="3" title="">Services</a></li>
+            <li><a href="index" accesskey="1" title="">Homepage</a></li>
+						<li><a href="services" accesskey="2" title="">Services</a></li>
 						<li class="active"><a href="about" accesskey="3" title="">About</a></li>
 						<li><a href="contactus" accesskey="4" title="">Contact</a></li>
 					</ul>
@@ -37,7 +37,7 @@ require('/include/dbconfigblog.php');
 		<div id="page" class="container">
 			<div id="content">
 				<div>
-<p>TODO: About writeup</p>
+            <p>TODO: About writeup</p>
 				</div>
 			</div>
 		</div>

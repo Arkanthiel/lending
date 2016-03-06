@@ -1,15 +1,17 @@
 <!doctype html>
 <html lang="en">
 <?php
+include_once 'admincheck.php';
 include_once '../include/dbconfigblog.php';
 
-if(isset($_GET['search_id']))
+
+if(isset($_GET['edit_id']))
 {
- $search=$_GET['search_id']);
- $sql_query="SELECT * FROM blog_posts WHERE  postTitle LIKE '%" . $search . "%' postCont LIKE '%" . $search  ."%'";
+ $sql_query="SELECT * FROM users WHERE user_id=".$_GET['edit_id'];
  $result_set=mysql_query($sql_query);
  $fetched_row=mysql_fetch_array($result_set);
 }
+
 
 ?>
 <head>
@@ -63,31 +65,49 @@ if(isset($_GET['search_id']))
 
 
 <body>
+  <article class="module width_3_quarter">
+  <header><h3 class="tabs_involved">Users Search by Author or Title</h3>
+  </header>
 
-	<header id="header">
-		<hgroup>
-			<h1 class="site_title"><a href="index">Lending Sys</a></h1>
-			<h2 class="section_title">Dashboard</h2></div> <!--<div class="btn_view_site"><a href="http://www.medialoot.com">View Site</a>-->
-		</hgroup>
-	</header> <!-- end of header bar -->
+  <form>
+    <form  method="post" action="user_search.php?go"  id="searchform">
+    <input  type="text" name="searchterm">
+    <input  type="submit" name="submit" value="Search">
+  </form>
 
-	<section id="secondary_bar">
-		<div class="user">
-			<p><?php echo $_SESSION['firstname'];  echo $_SESSION['lastname'];?> </p>
-			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
-		</div>
-		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="index">Website Admin</a> <div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
-		</div>
-	</section><!-- end of secondary bar -->
-<!-- end of sidebar -->
-<?php include('sidebar.php'); ?>
-<!-- end of sidebar -->
-
-	<section id="main" class="column">
-<!-- start of main section -->
-<?php include('main.php'); ?>
-	</section>
+  		<div class="tab_container">
+  			<div id="tab1" class="tab_content">
+  			<table class="tablesorter" cellspacing="0">
+  			<thead>
+  				<tr>
+           <th>Author</th>
+           <th>Last Name</th>
+           <th>Operation</th>
+           </tr>
+           <?php
+           if(isset($_GET['searchterm']))
+           {
+             $searchterm = $_GET['searchterm'];
+              $sql_query="SELECT * FROM $tbl_name WHERE postAuthor LIKE '%" . $searchterm . "%' OR postTitle LIKE '%" . $searchterm  ."%'";
+              $result_set=mysql_query($sql_query);
+              while($row=mysql_fetch_row($result_set))
+              {
+                if($result_set === FALSE) {
+                die(mysql_error());
+                }
+        ?>
+              <tr>
+              <td><?php echo $row[1]; ?></td>
+              <td><?php echo $row[2]; ?></td>
+              <td><a href="javascript:edt_id('<?php echo $row[0]; ?>')">Edit</a></td>
+              </tr>
+              <?php
+            }
+          }
+        ?>
+    </tbody>
+    </table>
+    </div>
 
 
 </body>

@@ -58,13 +58,13 @@ include_once 'admincheck.php';
 	<header id="header">
 		<hgroup>
 			<h1 class="site_title"><a href="index">Lending Sys</a></h1>
-			<h2 class="section_title">Dashboard</h2></div>
+			<h2 class="section_title">Creative Credit &amp; Loans Assistance Services, Inc.</h2></div>
 		</hgroup>
 	</header> <!-- end of header bar -->
 
 	<section id="secondary_bar">
 		<div class="user">
-			<p><?php echo $_SESSION['firstname'];  echo $_SESSION['lastname'];?> </p>
+			<p><?php echo $_SESSION['firstname']; ?> <?php echo $_SESSION['lastname'];?> </p>
 			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
 		</div>
 		<div class="breadcrumbs_container">
@@ -77,7 +77,7 @@ include_once 'admincheck.php';
 
 	<section id="main" class="column">
 <!-- start of main section -->
-<?php include('user_view_test.php'); ?>
+<?php include('user_edit_main.php'); ?>
 	</section>
 
 

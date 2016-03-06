@@ -53,6 +53,7 @@
 <h3>User Tasks</h3>
 <li class="icn_profile"><a href="user_profile">Your Profile</a></li>
 <li class="icn_folder"><a href="user_account">Your Account</a></li>
+<li class="icn_folder"><a href="user_pay">Pay Using Savings</a></li>
 </ul>
 <h3>Admin</h3>
 <li class="icn_jump_back"><a href="logout.php">Logout</a></li>

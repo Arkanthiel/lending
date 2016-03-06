@@ -7,6 +7,8 @@ include_once '../include/dbconfigblog.php';
     $postTitle = $_POST['postTitle'];
     $postDesc = $_POST['postDesc'];
     $postCont = $_POST['postCont'];
+    $publishedstatus = $_POST['publishedstatus'];
+    $postAuthor = $_SESSION['username'];
     //$postDate = date_create()->format('Y-m-d H:i:s');
 
 
@@ -17,7 +19,7 @@ include_once '../include/dbconfigblog.php';
     $postCont= mysql_real_escape_string($postCont);
 
     // sql query for inserting data into database
-            $sql_query = "INSERT INTO blog_posts(postTitle,postDesc,postCont) VALUES('$postTitle','$postDesc','$postCont')";
+            $sql_query = "INSERT INTO blog_posts(postAuthor,postTitle,postDesc,postCont,publishedstatus) VALUES('$postAuthor','$postTitle','$postDesc','$postCont','$publishedstatus')";
             mysql_query($sql_query);
   }
 ?>
@@ -57,12 +59,11 @@ include_once '../include/dbconfigblog.php';
       </div>
     <footer>
       <div class="submit_link">
-<!--        <select>
-          <option>Draft</option>
-          <option>Published</option>
+     <select name="publishedstatus">
+          <option value="Draft">Draft</option>
+          <option value="Published">Published</option>
         </select>
-      -->
-        <input type="submit" value="Publish" class="alt_btn" name="btn-save">
+       <input type="submit" value="Publish" class="alt_btn" name="btn-save">
         <input type="submit" value="Reset">
       </form>
       </div>

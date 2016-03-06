@@ -28,16 +28,16 @@ if(isset($_GET['delete_id']))
 	<script type="text/javascript">
   function edt_id(id)
   {
-   if(confirm('Sure to edit ?'))
+   if(confirm('Edit this User Data?'))
    {
-    window.location.href='edit_data.php?edit_id='+id;
+    window.location.href='user_edit.php?edit_id='+id;
    }
   }
   function delete_id(id)
   {
-   if(confirm('Sure to Delete ?'))
+   if(confirm('Are you sure you want to Delete this Entry? ?'))
    {
-    window.location.href='index.php?delete_id='+id;
+    window.location.href='user_view.php?delete_id='+id;
    }
   }
     </script>
@@ -56,7 +56,7 @@ if(isset($_GET['delete_id']))
   <div class="tab_container">
     <div id="tab1" class="tab_content">
       <form>
-        <form  method="post" action="user_search.php?go"  id="searchform">
+        <form  method="post" action="user_search.php?"  id="searchform">
 	      <input  type="text" name="searchterm">
         <input  type="submit" name="submit" value="Search">
       </form>

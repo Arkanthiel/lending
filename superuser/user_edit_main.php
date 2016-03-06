@@ -1,5 +1,6 @@
 <!doctype html>
 <?php
+//notes: updating works, but no inital edit_id, also refresh isnt auto update
 include_once 'admincheck.php';
 require('../include/dbconfig.php');
 
@@ -10,6 +11,8 @@ if(isset($_GET['edit_id']))
  $result_set=mysql_query($sql_query);
  $fetched_row=mysql_fetch_array($result_set);
 }
+
+
 if(isset($_POST['btn-update']))
 {
  // variables for input data
@@ -83,7 +86,7 @@ if(isset($_POST['btn-update']))
  $email = stripslashes($email);
  $phonenum = stripslashes($phonenum);
  $cellphone = stripslashes($cellphone);
-  $religion = stripslashes($religion);
+ $religion = stripslashes($religion);
  $civilstatus = stripslashes($civilstatus);
  $education = stripslashes($education);
  $homeadd = stripslashes($homeadd);
@@ -251,11 +254,11 @@ if(isset($_POST['btn-update']))
  // sql query execution function
  if(mysql_query($sql_query))
  {
+   echo("<meta http-equiv='refresh' content='0.01'>");
   ?>
   <script type="text/javascript">
   alert('Data Updated Successfully');
-  location.reload(forceGet)
-    </script>
+      </script>
     <?php
  }
  else
@@ -281,7 +284,6 @@ if(isset($_GET['delete_id']))
  header("Location: $_SERVER[PHP_SELF]");
 }
 // delete condition
-
  ?>
 <html lang="en">
 <head>
@@ -318,12 +320,39 @@ if(isset($_GET['delete_id']))
     });
 </script>
 </head>
-
-
 <body>
+  <?php
+  date_default_timezone_set('Australia/Perth');
+  $alpha=date("Y/m/d");
+  $omega=$fetched_row['datedue'];
+  $sql_query="SELECT * FROM users WHERE user_id=".$_GET['edit_id'];
+  $result_set=mysql_query($sql_query);
+  $row=mysql_fetch_row($result_set);
+
+
+        // RETURN FALSE IF THE DATES ARE BOGUS
+      if (!$a = strtotime($alpha)) return FALSE;
+      if (!$z = strtotime($omega)) return FALSE;
+
+      // MAN PAGE http://php.net/manual/en/function.gregoriantojd.php
+      $a_jd = GregorianToJD( date('m', $a), date('d', $a), date('Y', $a) );
+      $z_jd = GregorianToJD( date('m', $z), date('d', $z), date('Y', $z) );
+
+  $countdowndate = $z_jd - $a_jd;
+
+
+
+  if ($countdowndate <= 15){
+  ?>
+  <h4 class="alert_error">There are <?php echo $countdowndate; ?> days before your Due Date!</h4>
+  <?php
+  }
+
+
+      ?>
   <form method="post">
   <article class="module width_full_real">
-  <header><h3 class="tabs_involved">Principal Borrower Information</h3>
+      <header><h3 class="tabs_involved">Principal Borrower Information</h3>
   </header>
   		<div class="module_content">
   			<div id="tab1" class="tab_content">
@@ -648,8 +677,11 @@ if(isset($_GET['delete_id']))
 
   </div>
   <footer>
+  <div class="submit_link">
   <button type="submit" name="btn-update"><strong>UPDATE</strong></button> <button type="submit" name="btn-cancel"><strong>Cancel</strong></button>
+  </div>
   </footer>
+
   </article>
   </form>
   <br/>

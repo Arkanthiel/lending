@@ -27,7 +27,7 @@ include_once 'admincheck.php';
 	<header id="header">
 		<hgroup>
 			<h1 class="site_title"><a href="index">Lending Sys</a></h1>
-			<h2 class="section_title">Dashboard</h2></div> <!--<div class="btn_view_site"><a href="http://www.medialoot.com">View Site</a>-->
+			<h2 class="section_title">Creative Credit &amp; Loans Assistance Services, Inc.</h2></div> <!--<div class="btn_view_site"><a href="http://www.medialoot.com">View Site</a>-->
 		</hgroup>
 	</header> <!-- end of header bar -->
 
@@ -39,9 +39,8 @@ include_once 'admincheck.php';
 		<div class="breadcrumbs_container">
 			<article class="breadcrumbs"><a href="index">Website Admin</a> <div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
 		</div>
-	</section>
-
-<!-- end of secondary bar -->
+	</section><!-- end of secondary bar -->
+<!-- end of sidebar -->
 <?php include('sidebar.php'); ?>
 <!-- end of sidebar -->
 

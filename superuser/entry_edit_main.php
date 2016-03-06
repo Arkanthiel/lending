@@ -12,7 +12,7 @@ if(isset($_POST['btn-update']))
  $postTitle = $_POST['postTitle'];
  $postDesc = $_POST['postDesc'];
  $postCont = $_POST['postCont'];
- $postDate = $_POST['postDate'];
+ $publishedstatus = $_POST['publishedstatus'];
  // variables for input data
 
  //escape stuff because Robert Drop Tables
@@ -22,9 +22,9 @@ $postCont = stripslashes($postCont);
 $postTitle = mysql_real_escape_string($postTitle);
 $postDesc = mysql_real_escape_string($postDesc);
 $postCont = mysql_real_escape_string($postCont);
-
+$publishedstatus = mysql_real_escape_string($postCont);
  // sql query for update data into database
- $sql_query = "UPDATE blog_posts SET postTitle='$postTitle',postDesc='$postDesc',postCont='$postCont' WHERE postID=".$_GET['edit_id'];
+ $sql_query = "UPDATE blog_posts SET postTitle='$postTitle',postDesc='$postDesc',postCont='$postCont',publishedstatus='$publishedstatus' WHERE postID=".$_GET['edit_id'];
  // sql query for update data into database
 
  // sql query execution function
@@ -72,6 +72,8 @@ if(isset($_POST['btn-cancel']))
 <script src="../include/dashstyle/js/hideshow.js" type="text/javascript"></script>
 <script src="../include/dashstyle/js/jquery.tablesorter.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="../include/dashstyle/js/jquery.equalHeight.js"></script>
+<script src="../include/tinymce/tinymce.min.js"></script>
+ <script>tinymce.init({ selector:'textarea' });</script>
 <script type="text/javascript"></script>
 </head>
 <body>
@@ -90,17 +92,17 @@ if(isset($_POST['btn-cancel']))
           </fieldset>
           <fieldset>
             <label>Content</label>
-            <textarea type="text" name="postCont" required /><?php print $fetched_row['postCont']; ?></textarea>
+            <textarea type="text" rows="40" name="postCont" required /><?php print $fetched_row['postCont']; ?></textarea>
           </fieldset>
 
       </div>
 
     <footer>
       <div class="submit_link">
-<!--        <select>
-          <option>Draft</option>
-          <option>Published</option>
-        </select> -->
+        <select name="publishedstatus">
+             <option value="Draft" <?php if ($fetched_row['publishedstatus'] == "Draft") { echo " selected"; } ?>>Draft</option>
+             <option value="Published" <?php if ($fetched_row['publishedstatus'] == "Published") { echo " selected"; } ?>>Published</option>
+           </select>
         <label>Date Created</label>
         <input type="text" value="<?php print $fetched_row['postDate'];?>" disabled />
         <button type="submit" name="btn-update"><strong>Update</strong></button>

@@ -1,6 +1,5 @@
 <?php
 require('include/dbconfig.php');
-echo "hello we're working on it. give us a sec\n";
 
 $result2 = mysql_query("SELECT * FROM users");
 $num_rows = mysql_num_rows($result2);
@@ -11,9 +10,8 @@ $sql_query="SELECT * FROM $tbl_name WHERE user_id='$x' LIMIT 1";
 $result_set=mysql_query($sql_query);
 while($row=mysql_fetch_row($result_set))
   {
-  $user_id=$row['0'];
-  $first_name = $row['1'];
-  // FOR EACH DATABASE ENTRY CHECK THE JOO DIT AND IF JUDITH = 0
+  //$user_id=$row['0'];
+  //$first_name = $row['1']; Display stuff for debugging
   date_default_timezone_set('Australia/Perth');
   $alpha=date("Y/m/d");
   $omega=$row['20'];

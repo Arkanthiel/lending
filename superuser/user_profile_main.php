@@ -653,8 +653,10 @@ if(isset($_GET['delete_id']))
 
   </div>
   <footer>
+              <div class="submit_link">
   <button type="submit" name="btn-update"><strong>UPDATE</strong></button> <button type="submit" name="btn-cancel"><strong>Cancel</strong></button>
   </footer>
+</div>
   </article>
   </form>
   <br/>

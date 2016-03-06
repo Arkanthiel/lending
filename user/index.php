@@ -1,27 +1,23 @@
 <!doctype html>
-<?php
-session_start();
-require('../include/dbconfigblog.php');
- ?>
 <html lang="en">
+<?php
+include_once 'admincheck.php';
+?>
 <head>
-	<meta charset="utf-8"/>
-	<title>Lending System Dashboard</title>
 
-	<link rel="stylesheet" href="include/dashstyle/css/layout.css" type="text/css" media="screen" />
+	<meta charset="utf-8"/>
+	<title>Managing User Accounts | Admin Dashboard</title>
+
+	<link rel="stylesheet" href="../include/dashstyle/css/layout.css" type="text/css" media="screen" />
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<script src="include/dashstyle/js/jquery-1.5.2.min.js" type="text/javascript"></script>
-	<script src="include/dashstyle/js/hideshow.js" type="text/javascript"></script>
-	<script src="include/dashstyle/js/jquery.tablesorter.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="/include/dashstyle/js/jquery.equalHeight.js"></script>
+	<script src="../include/dashstyle/js/jquery-1.5.2.min.js" type="text/javascript"></script>
+	<script src="../include/dashstyle/js/hideshow.js" type="text/javascript"></script>
+	<script src="../include/dashstyle/js/jquery.tablesorter.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../include/dashstyle/js/jquery.equalHeight.js"></script>
 	<script type="text/javascript">
-	function view_id(id)
-	  window.location.href='entry_view.php?view_id='+id;
-	 }
-
 	$(document).ready(function()
     	{
       	  $(".tablesorter").tablesorter();
@@ -62,54 +58,28 @@ require('../include/dbconfigblog.php');
 	<header id="header">
 		<hgroup>
 			<h1 class="site_title"><a href="index">Lending Sys</a></h1>
-			<h2 class="section_title">Dashboard</h2></div> <!--<div class="btn_view_site"><a href="http://www.medialoot.com">View Site</a>-->
+			<h2 class="section_title">Creative Credit &amp; Loans Assistance Services, Inc.</h2></div>
 		</hgroup>
 	</header> <!-- end of header bar -->
 
 	<section id="secondary_bar">
 		<div class="user">
-			<p><?php echo $_SESSION['firstname']; ?>&nbsp;<?php  echo $_SESSION['lastname'];?> </p>
+			<p><?php echo $_SESSION['firstname'];?>&nbsp;<?php echo $_SESSION['lastname'];?> </p>
 			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
 		</div>
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="index">Website</a> </article>
+			<article class="breadcrumbs"><a href="index">Website Admin</a> <div class="breadcrumb_divider"></div> <a class="current">Manage Users</a></article>
 		</div>
 	</section><!-- end of secondary bar -->
+<!-- end of sidebar -->
+<?php include('sidebar.php'); ?>
+<!-- end of sidebar -->
 
-	<aside id="sidebar" class="column">
-				<?php
-				include('sidebar.php');
-				?>
-			</aside><!-- end of sidebar -->
-			<section id="main" class="column">
-				<?php
-				 $sql_query="SELECT * FROM blog_posts";
-				 $result_set=mysql_query($sql_query);
-				 while($row=mysql_fetch_row($result_set))
-							{
-				?>
-			  <article class="module width_full">
+	<section id="main" class="column">
+<!-- start of main section -->
+<?php include('user_account_main.php'); ?>
+	</section>
 
-					<header><h3><a href="entry_view.php?view_id=<?php echo $row[0]; ?>"><?php echo $row[1]; ?></a></h3></header>
-		    	<div class="module_content">
-						<br/>
-			      Post Preview<h3><?php echo $row[2]; ?></h3>
-					<p>Posted on:<?php echo $row[4]; ?></p>
-			      <?php echo $row[3]; ?>
-          	</div>
-
-			        <footer>
-			          <div class="submit_link">
-			            <a href="javascript:view_id('<?php echo $row[0]; ?>')"><p>Read More</p></a>
-
-								</div>
-							</footer>
-			    </article>
-												<div class="spacer"></div>
-					<?php
-				}
-					?>
-			</section>
 
 </body>
 

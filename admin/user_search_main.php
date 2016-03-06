@@ -3,16 +3,6 @@
 include_once 'admincheck.php';
 require('../include/dbconfig.php');
 
-$searchterm = $_GET['searchterm'];
-
-// delete condition
-if(isset($_GET['delete_id']))
-{
- $sql_query="DELETE FROM users WHERE user_id=".$_GET['delete_id'];
- mysql_query($sql_query);
- header("Location: $_SERVER[PHP_SELF]");
-}
-
 if(isset($_GET['edit_id']))
 {
  $sql_query="SELECT * FROM users WHERE user_id=".$_GET['edit_id'];
@@ -37,14 +27,7 @@ if(isset($_GET['edit_id']))
   {
    if(confirm('Sure to edit ?'))
    {
-    window.location.href='edit_data.php?edit_id='+id;
-   }
-  }
-  function delete_id(id)
-  {
-   if(confirm('Sure to Delete ?'))
-   {
-    window.location.href='index.php?delete_id='+id;
+    window.location.href='user_edit.php?edit_id='+id;
    }
   }
     </script>
@@ -58,13 +41,13 @@ if(isset($_GET['edit_id']))
 
 <body>
   <article class="module width_3_quarter">
-  <header><h3 class="tabs_involved">Users Search</h3>
+  <header><h3 class="tabs_involved">Users Search by Name</h3>
   </header>
 
   <form>
     <form  method="post" action="user_search.php?go"  id="searchform">
     <input  type="text" name="searchterm">
-    <input  type="submit" name="submit" value="go">
+    <input  type="submit" name="submit" value="Search">
   </form>
 
   		<div class="tab_container">
@@ -76,32 +59,30 @@ if(isset($_GET['edit_id']))
            <th>Last Name</th>
            <th>User type</th>
            <th>Username</th>
-           <th colspan="2">Operations</th>
+           <th>Operations</th>
            </tr>
            <?php
            if(isset($_GET['searchterm']))
            {
-              $sql_query="SELECT * FROM users LIKE first_name '%" . $searchterm .  "%' OR last_name LIKE '%" . $searchterm ."%' ";
+             $searchterm = $_GET['searchterm'];
+              $sql_query="SELECT * FROM users WHERE first_name LIKE '%" . $searchterm . "%' OR last_name LIKE '%" . $searchterm  ."%'";
               $result_set=mysql_query($sql_query);
               while($row=mysql_fetch_row($result_set))
-          {
-
-            if($result === FALSE) {
-                die(mysql_error()); // TODO: better error handling
+              {
+                if($result_set === FALSE) {
+                die(mysql_error());
                 }
-
-        }
         ?>
               <tr>
               <td><?php echo $row[1]; ?></td>
               <td><?php echo $row[3]; ?></td>
               <td><?php echo $row[8]; ?></td>
               <td><?php echo $row[10]; ?></td>
-              <td align="center"><a href="javascript:edt_id('<?php echo $row[0]; ?>')">Edit</a></td>
-              <td align="center"><a href="javascript:delete_id('<?php echo $row[0]; ?>')">Delete </a></td>
+              <td><a href="javascript:edt_id('<?php echo $row[0]; ?>')">Edit</a></td>
               </tr>
               <?php
-                        }
+            }
+          }
         ?>
     </tbody>
     </table>
