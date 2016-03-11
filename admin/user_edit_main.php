@@ -342,11 +342,16 @@ if(isset($_GET['delete_id']))
 
 
 
-  if ($countdowndate <= 15){
-  ?>
-  <h4 class="alert_error">There are <?php echo $countdowndate; ?> days before your Due Date!</h4>
-  <?php
-  }
+  if ($countdowndate <= 15 && $countdowndate > 0){
+	?>
+	<h4 class="alert_error">There are <?php echo $countdowndate; ?> days before your Due Date!</h4>
+	<?php
+	}
+	if ($countdowndate == 0 && $countdowndate >= 0){
+	?>
+	<h4 class="alert_error">Reminder, today is your Due Date!</h4>
+	<?php
+	}
 
 
       ?>

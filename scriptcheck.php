@@ -31,8 +31,9 @@ while($row=mysql_fetch_row($result_set))
       $interestcharge = $dueamt * $interestactual;
       $finalinterest = $interestcharge + $dueamt;
       $first_name = $row['1'];
+      $forOdNextMonth= date('m', strtotime("+1 month", strtotime($alpha))); //adds +1month to duedate
 
-      $addthis = "UPDATE users SET locurrentamt='$finalinterest' WHERE user_id='$x'";
+      $addthis = "UPDATE users SET locurrentamt='$finalinterest', datedue='$forOdNextMonth' WHERE user_id='$x'";
       mysql_query($addthis);
       }
   }

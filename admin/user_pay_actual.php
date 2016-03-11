@@ -77,7 +77,7 @@ include_once 'admincheck.php';
 
 	<section id="main" class="column">
 <!-- start of main section -->
-<?php include('user_pay_search.php'); ?>
+<?php include('user_pay_main.php'); ?>
 	</section>
 
 
