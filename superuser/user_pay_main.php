@@ -21,6 +21,7 @@ if(isset($_POST['btn-update']))
        $result_set=mysql_query($sql_query);
        $fetched_row=mysql_fetch_array($result_set);
 
+  $whopaid = $fetched_row['username'];
   $currentpool = $fetched_row['locurrentpool'];
   $currentamt = $fetched_row['locurrentamt'];
   $interestrate = $fetched_row['interestrate'];
@@ -30,9 +31,8 @@ if(isset($_POST['btn-update']))
   $b = $payment * 0.9;//Amount that actually goes to paying the Loan
   $c = $a + $currentpool; //adds 10% of the payment to the pool
   $d = $currentamt - $b; //subtracts the 90% from the loan
-
-
   $sql_query = "UPDATE users SET locurrentamt = '$d', locurrentpool = '$c', lolastpaidamt = '$payment', lolastpaiddate = '$lolastpaiddate' WHERE user_id=".$_GET['edit_id'];
+
 
  // sql query execution function
  if(mysql_query($sql_query))
@@ -54,13 +54,19 @@ if(isset($_POST['btn-update']))
     // set the url, number of POST vars, POST data
     curl_setopt($ch, CURLOPT_URL, $url);
     // execute post
-    $result = curl_exec($ch);
+    ?>
+    <h4 class="alert_success"> <?php $result = curl_exec($ch); ?> </h4>
+    <?php
+    //$result = curl_exec($ch);
     // close connection
     curl_close($ch);
 
     //$link = "<script type='text/javascript'>>window.open('$url')</script>";
     //echo $link;
-
+$paymenthandler = $_SESSION['username'];
+//update log
+$sql_query = "INSERT INTO logs(dateposted,amtpaid,whopaid,paymenthandler) VALUES('$lolastpaiddate','$payment','$whopaid','$paymenthandler')";
+mysql_query($sql_query);
 
       //echo("<meta http-equiv='refresh' content='0.01'>");
  }
@@ -74,6 +80,7 @@ if(isset($_POST['btn-update']))
  }
  // sql query execution function
 }
+
 if(isset($_POST['btn-cancel']))
 {
  header("Location: $_SERVER[PHP_SELF]");

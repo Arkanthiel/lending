@@ -42,6 +42,10 @@ if(isset($_POST['btn-update']))
                 alert('Payment Complete. Message sent');
                   </script>
                   <?php
+                  $paymenthandler = $_SESSION['username'];
+                  //update log
+                  $sql_query = "INSERT INTO logs(dateposted,amtpaid,whopaid,paymenthandler) VALUES('$lolastpaiddate','$payment','$whopaid','$paymenthandler')";
+                  mysql_query($sql_query);
             }
             if ($payment >= $currentpool && $payment > 0)
                 {

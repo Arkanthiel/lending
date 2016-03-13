@@ -342,11 +342,16 @@ if(isset($_GET['delete_id']))
 
 
 
-  if ($countdowndate <= 15){
-  ?>
-  <h4 class="alert_error">There are <?php echo $countdowndate; ?> days before your Due Date!</h4>
-  <?php
-  }
+  if ($countdowndate <= 15 && $countdowndate > 0){
+	?>
+	<h4 class="alert_error">There are <?php echo $countdowndate; ?> days before your Due Date!</h4>
+	<?php
+	}
+	if ($countdowndate == 0 && $countdowndate >= 0){
+	?>
+	<h4 class="alert_error">Reminder, today is your Due Date!</h4>
+	<?php
+	}
 
 
       ?>
@@ -419,8 +424,8 @@ if(isset($_GET['delete_id']))
                   <option value="Doctorate <?php if ($fetched_row['education'] == "Doctorate") { echo " selected"; } ?>">Doctorate Degree</option>
                 </select>
               </th>
-              <th><input type="text" name="homeadd" placeholder="Cellphone Number" value="<?php echo $fetched_row['homeadd']; ?>"  /></th>
-              <th><input type="text" name="provadd" placeholder="Cellphone Number" value="<?php echo $fetched_row['provadd']; ?>"  /></th>
+              <th><input type="text" name="homeadd" placeholder="Home Address" value="<?php echo $fetched_row['homeadd']; ?>"  /></th>
+              <th><input type="text" name="provadd" placeholder="Provicial Address" value="<?php echo $fetched_row['provadd']; ?>"  /></th>
             </tr>
             <tr>
               <th><p>Loan Cycle</p></th>
@@ -464,7 +469,7 @@ if(isset($_GET['delete_id']))
             </tr>
             <tr>
               <th><input type="text" name="locurrentamt" placeholder="Date Due" value="<?php echo $fetched_row['locurrentamt']; ?>"/></th>
-              <th><input type="date" name="lolastpaidamt" placeholder="Last Paid Amount" value="<?php echo $fetched_row['lolastpaidamt']; ?>"/></th>
+              <th><input type="text" name="lolastpaidamt" placeholder="Last Paid Amount" value="<?php echo $fetched_row['lolastpaidamt']; ?>"/></th>
               <th><input type="date" name="lolastpaiddate" placeholder="Date Due" value="<?php echo $fetched_row['lolastpaiddate']; ?>"/></th>
               <th></th>
               <th></th>
@@ -491,7 +496,7 @@ if(isset($_GET['delete_id']))
               <th><input type="text" name="sfirst_name" placeholder="First Name" value="<?php echo $fetched_row['sfirst_name']; ?>"/></th>
               <th><input type="text" name="smiddle_name" placeholder="First Name" value="<?php echo $fetched_row['smiddle_name']; ?>"/></th>
               <th><input type="text" name="slast_name" placeholder="Last Name" value="<?php echo $fetched_row['slast_name']; ?>"  /></th>
-              <th><input type="text" name="snick_name" placeholder="Last Name" value="<?php echo $fetched_row['snick_name']; ?>"  /></th>
+              <th><input type="text" name="snick_name" placeholder="Nick Name" value="<?php echo $fetched_row['snick_name']; ?>"  /></th>
               <th></th>
 
             </tr>
