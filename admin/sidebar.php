@@ -34,6 +34,7 @@
 <li class="icn_profile"><a href="user_pay">Process User Payment</a></li>
 </ul>
 <h3>Admin</h3>
+<li class="icn_settings"><a href="logs_view">Search for a User</a></li>
 <li class="icn_jump_back"><a href="logout.php">Logout</a></li>
 </ul>
 

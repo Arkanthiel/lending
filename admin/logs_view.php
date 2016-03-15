@@ -6,7 +6,7 @@ include_once 'admincheck.php';
 <head>
 
 	<meta charset="utf-8"/>
-	<title>Searching Entries | Administrator Dashboard</title>
+	<title>Viewing Payment Logs | Admin Dashboard</title>
 
 	<link rel="stylesheet" href="../include/dashstyle/css/layout.css" type="text/css" media="screen" />
 	<!--[if lt IE 9]>
@@ -58,7 +58,7 @@ include_once 'admincheck.php';
 	<header id="header">
 		<hgroup>
 			<h1 class="site_title"><a href="index">Lending Sys</a></h1>
-			<h2 class="section_title">Creative Credit &amp; Loans Assistance Services, Inc.</h2></div> <!--<div class="btn_view_site"><a href="http://www.medialoot.com">View Site</a>-->
+			<h2 class="section_title">Creative Credit &amp; Loans Assistance Services, Inc.</h2></div>
 		</hgroup>
 	</header> <!-- end of header bar -->
 
@@ -68,7 +68,7 @@ include_once 'admincheck.php';
 			<!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
 		</div>
 		<div class="breadcrumbs_container">
-			<article class="breadcrumbs"><a href="index">Website Admin</a> <div class="breadcrumb_divider"></div> <a class="current">Dashboard</a></article>
+			<article class="breadcrumbs"><a href="index">Website Admin</a> <div class="breadcrumb_divider"></div> <a class="current">Payment Log View</a></article>
 		</div>
 	</section><!-- end of secondary bar -->
 <!-- end of sidebar -->
@@ -77,7 +77,7 @@ include_once 'admincheck.php';
 
 	<section id="main" class="column">
 <!-- start of main section -->
-<?php include('entry_search_main.php'); ?>
+<?php include('logs_view_main.php'); ?>
 	</section>
 
 

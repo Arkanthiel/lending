@@ -8,7 +8,7 @@ include_once 'admincheck.php';
 <head>
 
 	<meta charset="utf-8"/>
-	<title>Administrator Dashboard</title>
+	<title>Viewing Blog Entries | Administrator Dashboard</title>
 
 	<link rel="stylesheet" href="../include/dashstyle/css/layout.css" type="text/css" media="screen" />
 	<!--[if lt IE 9]>

@@ -6,7 +6,7 @@ include_once 'admincheck.php';
 <head>
 
 	<meta charset="utf-8"/>
-	<title>Add New Entry | Admin Dashboard</title>
+	<title>Add New User Account | Admin Dashboard</title>
 
 	<link rel="stylesheet" href="../include/dashstyle/css/layout.css" type="text/css" media="screen" />
 	<!--[if lt IE 9]>

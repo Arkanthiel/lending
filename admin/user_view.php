@@ -6,7 +6,7 @@ include_once 'admincheck.php';
 <head>
 
 	<meta charset="utf-8"/>
-	<title>Managing User Accounts | Admin Dashboard</title>
+	<title>Viewing User Accounts | Admin Dashboard</title>
 
 	<link rel="stylesheet" href="../include/dashstyle/css/layout.css" type="text/css" media="screen" />
 	<!--[if lt IE 9]>
@@ -14,7 +14,7 @@ include_once 'admincheck.php';
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<script src="../include/dashstyle/js/jquery-1.5.2.min.js" type="text/javascript"></script>
-	<script src="../include/dashstyle/js/hideshow.js" type="text/javascript"></script>
+	<script src="../include/dashsty	le/js/hideshow.js" type="text/javascript"></script>
 	<script src="../include/dashstyle/js/jquery.tablesorter.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="../include/dashstyle/js/jquery.equalHeight.js"></script>
 	<script type="text/javascript">

@@ -191,6 +191,7 @@ if(isset($_POST['btn-save']))
         last_name,
         nick_name,
         gender,
+        usertype,
         email,
         phonenum,
         cellphone,
@@ -255,6 +256,7 @@ if(isset($_POST['btn-save']))
         '$last_name',
         '$nick_name',
         '$gender',
+        '$usertype',
         '$email',
         '$phonenum',
         '$cellphone',
@@ -374,13 +376,18 @@ if(isset($_POST['btn-save']))
                 <th><p>Password:</p></th>
                 <th><p>Confirm Password:</p></th>
                 <th><p>Email:</p></th>
+                <th><p>Account type:</p></th>
                 </tr>
               <tr>
                 <th><input type="text" name="username" required=""/></th>
                 <th><input type="password" name="password" id="pass1" required=""/></th>
                 <th><input type="password" id="pass2" onkeyup="checkPass(); return false;" required=""/> <br/>  <sub><span id="confirmMessage" class="confirmMessage"></span></sub></th>
                 <th><input type="email" name="email" placeholder="Email" required="" /></th>
-                <th></th>
+                <th>                <select name="usertype">
+                                      <option value="admin">Admin</option>
+                                      <option value="superuser">Superuser</option>
+                                      <option value="user">User</option>
+                                </select></th>
             </table>
       </div>
     </div>
